@@ -20,7 +20,7 @@
 
 A JavaScript Obfuscation framework based on evolutionary heuristics
 
-## Installation / Repository Setup
+## Repository Setup
 
 This repository is hosted on [Github](https://github.com/shadobf/jshadobf). 
 
@@ -47,7 +47,45 @@ If upon pulling the repository, you end in a state where another collaborator ha
     $> make update
 
 
+## Installation
 
+Installation on Debian 8.2
+--------------------------
+
+        $> sudo apt-get install virtualenv build-essential openjdk-7-jre libfreetype6-dev libpng3 pkg-config nodejs-legacy python-dev python-tk 
+        $> virtualenv python_jshadobf
+        $> source python_jshadobf/bin/activate
+
+Go to the JShadobf directory
+
+        $> cd JShadobf
+
+Install antlr into virtualenv
+
+        $> cd thirdparty
+        $> tar xzf antlr-3.1.3.tar.gz
+        $> cp setuptools-0.6c11-py2.7.egg antlr-3.1.3/runtime/Python/setuptools-0.6c5-py2.7.egg
+        $> cd antlr-3.1.3/runtime/Python
+        $> python setup.py install
+        $> cd ../../../..
+
+Install jshadobf into virtualenv
+
+        $> cd src/
+        $> make
+        $> pip install numpy
+        $> python setup.py develop
+        $> cd ..
+
+
+## Examples: 
+
+        $> python tools/parsed_code_printer.py testsuite/prgms/sort.js 
+        $> python tools/compute_metrics.py -a -f  testsuite/prgms/alert.js  
+
+launch moaed
+
+        $> python tools/moea_launcher.py -g 50 -p 100 -1 testsuite/prgms/fibo.js -a moead -v -G mu1:exectime
 
 ## Issues / Feature request
 
